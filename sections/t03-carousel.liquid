@@ -33,7 +33,7 @@
     {%- assign collection = collections[section.settings.feature-collection] -%}
     {%- assign product_limit = section.settings.product_count -%}
         <div class="products-carousel js-flickity" data-flickity='{{ flickity_options }}'>
-        <!-- {% for product in collection.products limit: product_limit %} -->
+     
          <!-- content card-->
             <div class="carousel-cell">
                 <img style="height:300px;width:100%" src="https://taybacsensetravel.com/nview/at_diem-danh-nhung-diem-san-anh-dep-tim-lim-mua-lua-chin_db5d8cde5c181c521cffcbcb181b19e1.jpg"/>
@@ -51,7 +51,14 @@
                 <img style="height:300px;width:100%" src="https://taybacsensetravel.com/nview/at_diem-danh-nhung-diem-san-anh-dep-tim-lim-mua-lua-chin_db5d8cde5c181c521cffcbcb181b19e1.jpg"/>
             </div>  
        <!-- end content -->
-      <!-- {% endfor %} -->
+       {%comment%}
+          <!-- hoặc sử dụng vòng lặp for từ collection truyền vào trong content -->
+            {% for product in collection.products limit: product_limit %}
+              <div class="carousel-cell">
+                <img style="height:300px;width:100%" src="https://taybacsensetravel.com/nview/at_diem-danh-nhung-diem-san-anh-dep-tim-lim-mua-lua-chin_db5d8cde5c181c521cffcbcb181b19e1.jpg"/>
+              </div> 
+            {% endfor %}
+        {%endcomment%}
         </div>
 </div>
 
