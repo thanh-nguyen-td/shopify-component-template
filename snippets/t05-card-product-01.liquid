@@ -1,0 +1,124 @@
+{% comment %}
+
+  Renders a Card product
+  Request: add icon
+  Accepts:
+    - product: {Object} Product Liquid object (optional)
+  Usage:
+  {% render 't05-card-product-01', product:card-product %}
+
+{% endcomment %}
+
+{% style %}
+.custom-card{
+    height: 500px;
+    width:100%;
+    transition: all 1s;   
+    -moz-transition: all 1s;
+    -webkit-transition: all 1s;
+}
+.wrap-img{
+    width:100%;
+    height:350px;
+    overflow: hidden;
+    position:relative
+}
+.img-card{
+    width:100%;
+    height:100%;
+    position:absolute;
+    z-index: 0;
+}
+.text-button{
+    position: absolute;
+    bottom: -50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    width: 100%;
+    height: 50px;
+    border:1px solid #000;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: uppercase;
+    opacity: 0;
+}
+.custom-card:hover .text-button{
+    bottom: 0;
+    transition: all 1s;
+    opacity: 1;
+}
+.icon-group{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    flex-direction:column;
+    width: 100%;
+    height: 50px;  
+    right: 0;
+    opacity: 0;  
+    margin-top:5%;
+  
+}
+.custom-card:hover .icon-group{
+    right: 7%;
+    transition: all 1s;
+    opacity: 1;  
+}
+.icon-group .child-icon{
+    color:#000
+}
+
+.wrap-content{
+text-align:center;
+margin-top:10px;
+}
+.wrap-content .tags{
+    color:gray;
+    text-transform: uppercase;
+    font-size:13px;
+}
+.custom-a{
+    color:#000;
+    text-decoration: none;
+}
+{% endstyle %}
+<div  class="custom-card">
+    <div class="wrap-img">
+        <img  class="img-card" src="{{product.featured_media.preview_image | img_url: 'large'}}"/>
+        <div class="text-button">add to card</div>
+        <div class="icon-group">
+           <div>
+            <a class="child-icon" href="#">
+                <i class="fa-regular fa-heart"></i>
+            </a>
+           </div>
+            <a class="child-icon" href="#">
+                <i class="fa-regular fa-eye"></i>
+            </a>
+        </div>
+    </div>
+    <div class="wrap-content">
+        <div class="tags">
+            {{product.tags}}
+        </div>
+        <div style="font-size:14px; "><a href="{{product.url}}" class="custom-a">{{product.title}}</a></div>
+    <div style="font-size:18px; font-weight:600;color:#fb5f1f">Rs. {{product.price}}</div>
+    <div style="display: flex; text-align: center; justify-content: center;">
+        <div style="margin:5px;height: 32px;width:32px;border-radius:16px; display:flex; justify-content:center; align-items:center;border:1px solid #000">
+            <div style="background:#000;width: 26px;height:26px; border-radius:13px;color:transparent;">T</div>
+        </div>
+        <div style="margin:5px;height: 32px;width:32px;border-radius:16px; display:flex; justify-content:center; align-items:center;border:1px solid #000">
+            <div style="width: 26px;height:26px; border-radius:13px;color:transparent;background: #fb5f1f;">T</div>
+        </div>
+        <a href="#" style="margin:5px;height: 32px;width:32px;border-radius:16px; display:flex; justify-content:center; align-items:center;border:1px solid #000; text-decoration: none;">
+            <div style="background:white;width: 26px;height:26px; border-radius:13px;color:transparent;">T</div>
+        </a>
+    </div>
+    </div>
+</div>
