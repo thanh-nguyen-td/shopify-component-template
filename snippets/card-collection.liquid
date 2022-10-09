@@ -29,6 +29,15 @@
     assign card_style = settings.collection_card_style
   endif 
 -%}
+{%- comment -%} type 1 {%- endcomment -%}
+{% style %}
+  .card-collection-type-1 .card__heading{
+    text-align: center;
+  }
+  .card-collection-type-1 .icon-wrap{
+    display: none;
+  }
+{% endstyle %}
 
 <div class="card-wrapper animate-arrow {% if wrapper_class and wrapper_class != 'none' %}{{ wrapper_class }}{% else %}collection-card-wrapper{% endif %}">
   <div class="card

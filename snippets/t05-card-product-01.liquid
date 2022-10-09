@@ -5,7 +5,7 @@
   Accepts:
     - product: {Object} Product Liquid object (optional)
   Usage:
-  {% render 't05-card-product-01', product:card-product %}
+  {% render 'search', button_icon: "left" %}
 
 {% endcomment %}
 
@@ -95,11 +95,13 @@ margin-top:10px;
         <div class="icon-group">
            <div>
             <a class="child-icon" href="#">
-                <i class="fa-regular fa-heart"></i>
+                <!-- <i class="fa-regular fa-heart"></i> -->
+                {% render 'icon-icon' ,type:'hear' %}
             </a>
            </div>
             <a class="child-icon" href="#">
-                <i class="fa-regular fa-eye"></i>
+                <!-- <i class="fa-regular fa-eye"></i> -->
+                {% render 'icon-icon' ,type:'hear' %}
             </a>
         </div>
     </div>

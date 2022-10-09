@@ -1,0 +1,41 @@
+<div class="custom_auth_container">
+    <ul>
+       {% if shop.customer_accounts_enabled %}
+        {% if customer %}
+          <li>
+            <a href="{{ routes.account_url }}">Account11</a>
+          </li>
+           <li>
+             <a href="{{ routes.account_logout_url }}">Log out</a>
+           </li>
+          {% else %}
+           <li>
+             <a href="{{ routes.account_login_url}}">Log in</a>
+           </li>
+           <li>
+             <a href="{{ routes.account_register_url }}">Create account</a>
+           </li>
+        {% endif %}
+      {% endif %}
+    </ul>
+  </div>
+  
+  {% style %}
+    .custom_auth_container {
+      
+      width:100%
+    }
+  {% endstyle %}
+  
+  {% comment %}
+    {% if shop.customer_accounts_enabled %}
+        {% if customer %}
+           <a href="/account">Account</a>
+          {{'log out' | customer_logout_link}}
+          {% else %}
+            {{'log in' | customer_login_link}}
+            <p>or</p>
+            {{' Register' | customer_register_link}}
+        {% endif %}
+      {% endif %}
+  {% endcomment %}
