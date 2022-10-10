@@ -74,3 +74,9 @@
       background:red;
       width:100%
     }
+.custom_auth_container ul {
+  display:flex
+}
+.custom_auth_container li {
+  list-style-type:none
+}
