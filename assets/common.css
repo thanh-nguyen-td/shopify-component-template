@@ -84,5 +84,6 @@
   margin:10px
 }
 .custom_auth_container li a{
- color:#000
+   color:#000;
+  text-decoration: none
 }
