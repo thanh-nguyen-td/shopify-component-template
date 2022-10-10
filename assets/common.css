@@ -70,20 +70,18 @@
     display: flex;
     align-items: center;
 }
-  .custom_auth_container {
-      background:red;
+.custom_auth_container {
       width:100%
     }
 .custom_auth_container ul {
   display:flex;
-   list-style-type:none;
-  background:pink;
+  list-style-type:none;
   justify-content:flex-end
 }
 .custom_auth_container li {
   margin:10px
 }
 .custom_auth_container li a{
-   color:#000;
+  color:#000;
   text-decoration: none
 }
