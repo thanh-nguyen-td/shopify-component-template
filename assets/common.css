@@ -78,7 +78,6 @@
   display:flex;
    list-style-type:none;
   background:pink;
-  align-items:end;
   justify-content:flex-end
 }
 .custom_auth_container li {
