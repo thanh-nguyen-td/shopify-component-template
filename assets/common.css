@@ -77,7 +77,8 @@
 .custom_auth_container ul {
   display:flex;
    list-style-type:none;
-  background:pink
+  background:pink;
+  align-items:end
 }
 .custom_auth_container li {
   margin:10px
