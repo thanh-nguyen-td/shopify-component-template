@@ -70,3 +70,7 @@
     display: flex;
     align-items: center;
 }
+  .custom_auth_container {
+      background:red;
+      width:100%
+    }
