@@ -78,6 +78,6 @@
   display:flex;
    list-style-type:none
 }
-.custom_auth_container li a{
- 
+.custom_auth_container li{
+ color:#000
 }
