@@ -17,24 +17,12 @@
                 </p>
                 </div>
                 <div style="display:flex; justify-content:end;align-items:center">
-                  {%- comment -%} <div >
-                      <a class="text_link text_white" href="/account/login" id="customer_login_link" >
-                        Login
-                      </a>
-                  </div>
-                  <div class="ml_10 mr_10 text_white">
-                    or
-                  </div>
-                  <a class="text_link text_white" href="{{ routes.account_register_url }}">
-                    Create account
-                </a> {%- endcomment -%}
                 {% render 's01-login-logout' %}
                   <div>
                     {% render 's06-button-cart' %}
                   </div>
                   <div style="width:200px">
-                    {% render 's03-search', button_icon: "left", type: "2" %}
-                    {%- comment -%} {% render 's03-search-01' %} {%- endcomment -%}
+                    {% render 's03-search', button_icon: "left" %}
                   </div>
                 </div>
                </div>

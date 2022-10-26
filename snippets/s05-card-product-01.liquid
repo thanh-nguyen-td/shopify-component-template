@@ -1,11 +1,11 @@
 {% comment %}
 
-  Renders a Card product
+  Renders: trả về 1 thẻ sản phẩm
   Request: add icon
   Accepts:
     - product: {Object} Product Liquid object (optional)
   Usage:
-  {% render 'search', button_icon: "left" %}
+  {% render 't05-card-product-01', product:product %}
 
 {% endcomment %}
 
@@ -38,7 +38,6 @@
     background: #fff;
     width: 100%;
     height: 50px;
-    border:1px solid #000;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -90,8 +89,10 @@ margin-top:10px;
 {% endstyle %}
 <div  class="custom-card">
     <div class="wrap-img">
-        <img  class="img-card" src="{{product.featured_media.preview_image | img_url: 'large'}}"/>
-        <div class="text-button">add to card</div>
+        <img  class="img-card" src="{{product.featured_media.preview_image | img_url: 'large'}}" loading="lazy"/>
+        <div class="text-button">
+            {% render 's10-button-add-cart', product: {{product}} , type: '2' %}
+        </div>
         <div class="icon-group">
            <div>
             <a class="child-icon" href="#">

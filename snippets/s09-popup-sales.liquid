@@ -1,0 +1,94 @@
+{% comment %}
+
+  Renders:
+  - Show 1 popup quảng cáo trong vòng 15 giây tự động tắt
+  Request: add Jquery
+  Accepts:null
+  Usage:
+  	{% render 's09-popup-sales' %}
+
+{% endcomment %}
+
+<div class="popup-wrap">
+    <div class="popup">
+        <div class="popup-timer"><span class="seconds"></span> second(s) left</div>
+        <div class="btn-close">x</div>
+        {%- comment -%} content {%- endcomment -%}
+        <div style="">
+            <img src="https://d1wnwqwep8qkqc.cloudfront.net/uploads/stage/stage_image/47653/optimized_large_thumb_stage.jpg"/>
+        </div>
+         {%- comment -%} end content {%- endcomment -%}
+        
+    </div>
+</div>
+
+{% style %}
+.popup-wrap{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0,0,0,0.5);
+		display:none
+		/*transition: all 1.7s ease;*/
+}
+
+.popup{
+    position: relative;
+    width: 450px;
+    height: 450px;
+    background-color: rgba(0,0,0,1);
+    margin: 100px auto;
+}
+.popup img{
+    width:100%;
+    height:100%;
+}
+.popup-timer{
+		width: auto;
+		height: 25px;
+		color: #fff;
+		position: absolute;
+		right: 10px;
+		line-height: 25px;
+		padding: 0px 10px;
+	}
+	.btn-close{
+		background-color: #fff;
+		width: 25px;
+		height: 25px;
+		text-align: center;
+		line-height: 22px;
+		position: absolute;
+		right: -10px;
+		top: -10px;
+		cursor: pointer;
+		transition: all 0.5s ease;
+		border-radius: 50%;
+	}
+	.btn-close:hover{
+		transform: rotate(360deg);
+	}
+{% endstyle %}
+
+<script>
+ 
+    $(document).ready(function(){
+			$duration = 15;
+			$('.seconds').text($duration);
+			$('.popup-wrap').fadeIn(1500);
+			$myTimer = setInterval(function(){ startTimer() }, 1000);
+			$('.popup .btn-close').on("click",function(){
+				clearInterval($myTimer);
+				$('.popup-wrap').fadeOut(500);
+			});
+			
+			function startTimer(){
+				$duration--;
+				$('.seconds').text($duration);
+				if($duration==0){
+					clearInterval($myTimer);
+					$('.popup-wrap').fadeOut(500);
+				}
+			}
+	});
+</script>

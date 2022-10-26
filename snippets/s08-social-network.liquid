@@ -1,3 +1,15 @@
+{% comment %}
+
+  Renders:
+  - Show các mạng xã hồi liên kết cảu shop
+
+  Request:null
+  Accepts:null
+  Usage:
+  	{% render 's08-social-network' %}
+
+{% endcomment %}
+
 <ul class="footer__list-social list-unstyled list-social" role="list">
     {%- if settings.social_twitter_link != blank -%}
       <li class="list-social__item">
@@ -78,3 +90,11 @@
     color:#fff !important
   }
   {% endstyle %}
+
+  {% comment %}
+    https://twitter.com/shopify
+    https://www.facebook.com/shopify
+    https://www.instagram.com/shopify
+    https://www.tiktok.com/@shopify
+    https://www.youtube.com/shopify
+  {% endcomment %}

@@ -1,0 +1,99 @@
+{% comment %}
+
+  Renders: trả về 1 button show modal
+  Request:null
+  Accepts:null
+  Usage:
+  {% render 's04-modal' %}
+
+{% endcomment %}
+
+<button id="contact-modal-button" >Questions?</button>
+<div id="modal-contact-dark-overlay">T</div>
+<div id="contact-modal-container">
+  <div id="contact-modal">
+    <button id="contact-modal-exit">&#x2715;</button>
+    <h1>Demo</h1>
+  </div>
+</div>
+
+{% style %}
+#modal-contact-dark-overlay {
+    display:none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow: auto;
+    animation-name: animateopacity;
+    animation-duration: 0.5s;
+    z-index:3
+  }  
+  @keyframes animateopacity {
+    from {background-color: rgba(0, 0, 0, 0.0)}
+    to {background-color: rgba(0, 0, 0, 0.7)}
+  }
+
+  #contact-modal-container {
+    display:none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index:3
+  }
+
+  #contact-modal {
+    position: relative;
+    margin: 0 auto;
+    background-color: white;
+    width: 30%;
+    height: auto;
+    padding: 20px 40px 50px 40px;
+    box-shadow: -1px 3px 18px 0px rgba(128,128,128,1);
+    animation: drop-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translate(0%, -25%);
+    top: 25%;
+  }
+
+  @keyframes drop-in {
+    from {top: 10%;}
+    to {top: 25%}
+  }  
+  #contact-modal-exit {
+    position: absolute;
+    right: 20px;
+    border:none;
+    background:none;
+    font-size: 18px;
+  }
+{% endstyle %}
+
+<script>
+  const showOverlay = () => document.querySelector("#modal-contact-dark-overlay").style.display = "block";
+  const showModal = () => document.querySelector("#contact-modal-container").style.display = "block";
+  const hideOverlay = () => document.querySelector("#modal-contact-dark-overlay").style.display = "none";  
+  const hideModal = () => document.querySelector("#contact-modal-container").style.display = "none";
+
+  // Open modal
+  document.getElementById("contact-modal-button").addEventListener("click", function (){
+    showOverlay();
+    showModal()
+  })
+  
+  //Close Modal
+  document.getElementById("contact-modal-exit").addEventListener("click", function () {
+    hideOverlay()
+    hideModal()
+  })
+  
+  window.onclick = function(event) {
+    if(event.target === document.querySelector('#contact-modal-container')) {
+      hideOverlay();
+      hideModal();    	
+    }
+  }
+  </script>

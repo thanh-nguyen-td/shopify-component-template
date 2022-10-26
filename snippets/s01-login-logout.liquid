@@ -1,25 +1,35 @@
 {% comment %}
 
   Renders:
+  - Trả về button login và create account khi chưa đăng nhâp
+  - Trả về button logout và account khi đã đăng nhâp
   Request:null
   Accepts:null
   Usage:
-   {% render 'button-cart' %}
+   {% render 's01-login-logout' %}
 
 {% endcomment %}
 
+{% comment %}
+  vào web custom login > setting > checkout
+{% endcomment %}
+
 {{ 'common.css' | asset_url | stylesheet_tag }}
+
+{% assign fix_color = "#fff" %}
+{% assign fix_color_horver = "gold" %}
+
 <div class="custom_auth_container">
     <ul>
        {% if shop.customer_accounts_enabled %}
         {% if customer %}
           <li>
-            <a href="{{ routes.account_url }}">Account11</a>
+            <a href="{{ routes.account_url }}">Account</a>
           </li>
            <li>
              <a href="{{ routes.account_logout_url }}">Log out</a>
            </li>
-          {% else %}
+        {% else %}
            <li>
              <a href="{{ routes.account_login_url}}">Log in</a>
            </li>
@@ -38,14 +48,18 @@
 .custom_auth_container ul {
   display:flex;
   list-style-type:none;
-  justify-content:flex-end
+  justify-content:flex-end;
+  margin:0
 }
 .custom_auth_container li {
   margin:0 10px
 }
-.custom_auth_container li a{
-  color:#000;
+.custom_auth_container li a {
+  color:{{ fix_color }};
   text-decoration: none
+}
+.custom_auth_container li:hover a {
+  color:{{ fix_color_horver }};
 }
   {% endstyle %}
   

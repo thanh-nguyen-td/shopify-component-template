@@ -1,0 +1,34 @@
+{% comment %}
+
+  Renders:
+  - Show số lượng sản phẩm còn trong kho, số lượng chi tiết của từng màu, size
+  Request:
+  - vào file global.js
+    + tìm hàm : renderProductInfo()
+        thêm: const inventory = document.getElementById(`inventory-${this.dataset.section}`);
+        thêm: if (inventory) inventory.classList.remove('visibility-hidden'), this.updateInventory(html);
+    + thêm hàm này bên dưới hàm renderProductInfo(): 
+        updateInventory(html) {
+            const id = `inventory-${this.dataset.section}`;
+            const destination = document.getElementById(id);
+            const source = html.getElementById(id);
+        
+            if (source && destination) destination.innerHTML = source.innerHTML;
+        }
+    + tìm hàm : setUnavailable()
+        thêm: const inventory = document.getElementById(`inventory-${this.dataset.section}`);
+        thêm: if (inventory) inventory.classList.add('visibility-hidden');
+
+  Accepts:
+    - product: {Object} Product Liquid object (optional)
+    
+  Usage:
+     {% render 's12-quantity', product:product %}
+
+{% endcomment %}
+
+
+<div id="inventory-{{ section.id }}" > 
+    <p>Only <strong>{{ product.selected_or_first_available_variant.inventory_quantity }}</strong> left in stock</p>
+</div>
+

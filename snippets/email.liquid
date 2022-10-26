@@ -1,0 +1,308 @@
+{% assign inputs-radius = 0 %}
+{% assign input-border-color = '#000' %}
+{% assign inputs-color = '#000' %}
+{% assign inputs-color-label = '#999' %}
+{% style %}
+ .wrap_subscribe_email .newsletter-form__field-wrappers {
+  width: 100%;
+  max-width: 36rem;
+}
+
+.wrap_subscribe_email .newsletter-form__field-wrappers .field__inputs {
+  padding-right: 5rem;
+}
+
+.wrap_subscribe_email .newsletter-form__field-wrappers .fields {
+  z-index: 0;
+}
+.wrap_subscribe_email .field__button{
+    color:#000
+}
+
+.caption-large,
+.customer .fields input,
+.customer select,
+.field__input,
+.form__label,
+.select__select {
+  font-size: 1.3rem;
+  line-height: calc(1 + 0.5 / var(--font-body-scale));
+  letter-spacing: 0.04rem;
+}
+
+
+.fields:not(:focus-visible):not(.focused) + .share-button__copy:not(:focus-visible):not(.focused),
+.fields:not(:focus-visible):not(.focused) + .share-button__close:not(:focus-visible):not(.focused) {
+  background-color: inherit;
+}
+
+
+.fields:after,
+.select:after,
+.customer .fields:after,
+.customer select:after,
+.localization-form__select:after {
+  pointer-events: none;
+  content: '';
+  position: absolute;
+  top: var(--inputs-border-width);
+  right: var(--inputs-border-width);
+  bottom: var(--inputs-border-width);
+  left: var(--inputs-border-width);
+  border: 0.1rem solid {{ input-border-color }};
+  border-radius: {{ inputs-radius }};
+  box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity));
+  transition: box-shadow var(--duration-short) ease;
+  z-index: 1;
+}
+
+.field__input,
+.select__select,
+.customer .fields input,
+.customer select {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: rgb(var(--color-background));
+  color: {{ inputs-color }};
+  font-size: 1.6rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: box-shadow var(--duration-short) ease;
+  border-radius:{{ inputs-radius }};
+  
+  min-height: calc(var(--inputs-border-width) * 2);
+  min-width: calc(7rem + (var(--inputs-border-width) * 2));
+  position: relative;
+  border: 0;
+}
+
+.fields:before,
+.select:before,
+.customer .fields:before,
+.customer select:before,
+.localization-form__select:before {
+  pointer-events: none;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 0;
+  box-shadow: var(--inputs-shadow-horizontal-offset) var(--inputs-shadow-vertical-offset) var(--inputs-shadow-blur-radius) rgba(var(--color-base-text), var(--inputs-shadow-opacity));
+  z-index: -1;
+}
+
+.fields:after,
+.select:after,
+.customer .fields:after,
+.customer select:after,
+.localization-form__select:after {
+  pointer-events: none;
+  content: '';
+  position: absolute;
+  top: var(--inputs-border-width);
+  right: var(--inputs-border-width);
+  bottom: var(--inputs-border-width);
+  left: var(--inputs-border-width);
+  border: 0.1rem solid {{ input-border-color }};
+  border-radius:{{ inputs-radius }};
+  box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity));
+  transition: box-shadow var(--duration-short) ease;
+  z-index: 1;
+}
+
+
+.fields:hover.fields:after,
+.select:hover.select:after,
+.select__select:hover.select__select:after,
+.customer .fields:hover.fields:after,
+.customer select:hover.select:after,
+.localization-form__select:hover.localization-form__select:after {
+  box-shadow: 0 0 0 0 #fff;
+  outline: 0;
+  border-radius:{{ inputs-radius }};
+}
+
+
+.fields {
+  position: relative;
+  width: 100%;
+  display: flex;
+  transition: box-shadow var(--duration-short) ease;
+}
+
+.customer .fields {
+  display: flex;
+}
+
+.field--with-error {
+  flex-wrap: wrap;
+}
+
+.field__input,
+.customer .fields input {
+  flex-grow: 1;
+  text-align: left;
+  padding: 1.5rem;
+  margin: var(--inputs-border-width);
+  transition: box-shadow var(--duration-short) ease;
+}
+
+.field__label,
+.customer .fields label {
+  font-size: 1.6rem;
+  left: calc(var(--inputs-border-width) + 2rem);
+  top: calc(1rem + var(--inputs-border-width));
+  margin-bottom: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: top var(--duration-short) ease,
+    font-size var(--duration-short) ease;
+  color: {{ inputs-color-label }};
+  letter-spacing: 0.1rem;
+  line-height: 1.5;
+}
+
+.field__input:focus ~ .field__label,
+.field__input:not(:placeholder-shown) ~ .field__label,
+.field__input:-webkit-autofill ~ .field__label,
+.customer .fields input:focus ~ label,
+.customer .fields input:not(:placeholder-shown) ~ label,
+.customer .fields input:-webkit-autofill ~ label {
+  font-size: 1rem;
+  top: calc(var(--inputs-border-width) + 0.5rem);
+  left: calc(var(--inputs-border-width) + 2rem);
+  letter-spacing: 0.04rem;
+}
+
+.field__input:focus,
+.field__input:not(:placeholder-shown),
+.field__input:-webkit-autofill,
+.customer .fields input:focus,
+.customer .fields input:not(:placeholder-shown),
+.customer .fields input:-webkit-autofill {
+  padding: 2.2rem 1.5rem 0.8rem 2rem;
+  margin: var(--inputs-border-width);
+}
+
+.field__input::-webkit-search-cancel-button,
+.customer .fields input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.field__input::placeholder,
+.customer .fields input::placeholder {
+  opacity: 0;
+}
+
+.wrap_subscribe_email .field__inputs{
+  font-size: 1.3rem;
+  line-height: calc(1 + 0.5 / 100);
+  letter-spacing: 0.04rem;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  color: #000;
+  font-size: 1.6rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: box-shadow 100ms ease;
+  border-radius: 0;
+  height: 4.5rem;
+  min-height: calc(var(1px) * 2);
+  min-width: calc(7rem + (var(1px) * 2));
+  position: relative;
+  border: 0;
+}
+
+.wrap_subscribe_email .field__inputs:focus-visible{
+  box-shadow: 0 0 0 0 #fff;
+  outline: 0;
+  border-radius: 0;
+}
+.wrap_subscribe_email .field__inputs:focus{
+  box-shadow: 0 0 0 0 #fff;
+  outline: 0;
+  border-radius: 0;
+}
+.wrap_subscribe_email .field__inputs {
+  flex-grow: 1;
+  text-align: left;
+  padding: 1.5rem;
+  margin: 1px;
+  transition: box-shadow 100ms ease;
+}
+.wrap_subscribe_email .field__inputs:focus ~ .field__label,
+.wrap_subscribe_email .field__inputs:not(:placeholder-shown) ~ .field__label,
+.wrap_subscribe_email .field__inputs:-webkit-autofill ~ .field__label,
+.wrap_subscribe_email .customer .fields input:focus ~ label,
+.wrap_subscribe_email .customer .fields input:not(:placeholder-shown) ~ label,
+.wrap_subscribe_email .customer .fields input:-webkit-autofill ~ label {
+  font-size: 1rem;
+  top: 0.5rem;
+  left: 2rem;
+  letter-spacing: 0.04rem;
+}
+
+
+.wrap_subscribe_email .field__inputs:focus,
+.wrap_subscribe_email .field__inputs:not(:placeholder-shown),
+.wrap_subscribe_email .field__inputs:-webkit-autofill{
+  padding: 2.2rem 1.5rem 0.8rem 2rem;
+  margin: 1px;
+}
+
+.wrap_subscribe_email .field__inputs::placeholder,
+.wrap_subscribe_email .customer .fields input::placeholder {
+  opacity: 0;
+}
+.wrap_subscribe_email .color-inverse {
+    color:#000
+}
+{% endstyle %}
+<div class="wrap_subscribe_email">
+  {%- form 'customer', id: 'ContactFooter' -%}
+   <div class="center_align flex-row">
+    <div>
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="newsletter-form__field-wrappers">
+            <div class="fields">
+              <input
+                id="NewsletterForm--{{ section.id }}"
+                type="email"
+                name="contact[email]"
+                class="field__inputs"
+                value="{{ form.email }}"
+                aria-required="true"
+                autocorrect="off"
+                autocapitalize="off"
+                autocomplete="email"
+                {% if form.errors %}
+                  autofocus
+                  aria-invalid="true"
+                  aria-describedby="ContactFooter-error"
+                {% elsif form.posted_successfully? %}
+                  aria-describedby="ContactFooter-success"
+                {% endif %}
+                placeholder="{{ 'newsletter.label' | t }}"
+                required
+              >
+              <label class="field__label" for="NewsletterForm--{{ section.id }}">
+                {{ 'newsletter.label' | t }}
+              </label>
+              <button type="submit" class="newsletter-form__button field__button" name="commit" id="Subscribe" aria-label="{{ 'newsletter.button_label' | t }}">
+                  {% render 'icon-arrow' %}
+              </button>
+            </div>
+            {%- if form.errors -%}
+              <small class="newsletter-form__message form__message" id="ContactFooter-error">{% render 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</small>
+            {%- endif -%}
+          </div>
+          {%- if form.posted_successfully? -%}
+            <h3 class="newsletter-form__message newsletter-form__message--success form__message" id="ContactFooter-success" tabindex="-1" autofocus>{% render 'icon-success' %}{{ 'newsletter.success' | t }}</h3>
+          {%- endif -%}
+    </div>
+   </div>
+  {%- endform -%}
+</div>

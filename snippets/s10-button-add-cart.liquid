@@ -1,0 +1,51 @@
+{% comment %}
+
+  Renders a button add product in cart
+
+  Accepts:
+  - product: {Object} Product Liquid object (optional)
+  - type: 
+    + "1": có tăng giảm số lượng, có button add card
+    + "2": chỉ có button add card
+ 
+  Usage:
+  {% render 's10-button-add-cart', product: card_product, type:'1' %}
+
+{% endcomment %}
+
+{% style %}
+  .add-card-container .btns {
+    padding:10px 20px;
+    margin:0
+  }
+
+
+  .add-card-container-type2 {
+    width:100%;
+    height:100%
+  }
+  .add-card-container-type2 .btns {
+    padding:10px 20px;
+    margin:0;
+    width:100%;
+    background:#fff;
+  }
+{% endstyle %}
+
+{% if type == '1' %}
+  <div class="add-card-container">
+    <form method="post" action="/cart/add">
+      <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+      <input min="1" type="number" id="quantity" name="quantity" value="1"/>
+      <input type="submit" value="Add to cart" class="btns" />
+    </form>
+  </div>
+  {% else %}
+  <div class="add-card-container-type2">
+    <form method="post" action="/cart/add">
+      <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+      <input type="submit" value="Add to cart" class="btns" />
+    </form>
+  </div>
+{% endif %}
+
